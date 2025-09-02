@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Memo Pad</title>
+    <style>
+        body { 
+            font-family: 'Garamond', serif; 
+            font-size: 24px; 
+            color: #000000; 
+            padding: 20px; 
+            max-width: 980px; 
+            margin: 0 auto; 
+            position: relative; /* For absolute positioning of the button. */
+            background-image: url('assets/background.jpg'); /* Page background from assets folder. */
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            min-height: 100vh; 
+        }
+        #memo-content { 
+            min-height: 500px; /* Provides a starting area for typing. */
+            outline: none; /* Removes default focus outline. */
+            background-color: #FFFFFF; /* White container background. */
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition. */
+            margin-top: 420px; /* Spacing below the logo (400px height + 20px margin). */
+        }
+        .back-button { 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            width: 400px; 
+            height: 400px; 
+        }
+        .back-button img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Preserves aspect ratio. */
+        }
+    </style>
+</head>
+<body>
+    <a href="0_index_Chrome_Corp.html" class="back-button">
+        <img src="assets/logo.png" alt="Back to Index">
+    </a>
+    <div id="memo-content" contenteditable="true">
+        <!-- Blank area for typing your memo content. -->
+    </div>
+</body>
+</html>

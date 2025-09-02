@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Corp - Secret Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            background-image: url('assets/merch/Chrome-Corp-poster.jpg'); 
+            background-repeat: repeat; 
+            font-family: 'Roboto', sans-serif; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        #logo { 
+            margin: 10px 0; 
+        }
+        #instructions { 
+            color: #FFFFFF; 
+            font-style: italic; 
+            margin: 10px 0; 
+            max-width: 980px; 
+        }
+        #narrative { 
+            color: #FFFFFF; 
+            font-weight: bold; 
+            margin: 10px 0; 
+            max-width: 980px; 
+        }
+        #win-button { 
+            display: none; 
+            margin: 20px 0; 
+            padding: 10px 20px; 
+            background-color: #C0C0C0; 
+            color: #333; 
+            font-size: 24px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        .advert { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            z-index: 10; 
+            width: 200px; 
+            height: 350px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            background-color: #808080; 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+            transition: box-shadow 0.3s ease; 
+        }
+        .advert:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        .advert-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+        }
+        .advert-text { 
+            position: relative; 
+            z-index: 1; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white; 
+            padding: 5px; 
+            text-align: center; 
+            font-style: normal; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <a href="0_index_Chrome_Corp.html" id="logo">
+        <img src="assets/logo.png" alt="Chrome Corp Logo" style="width: 200px; height: auto; margin-bottom: 10px;">
+    </a>
+    <div id="title"></div>
+    <canvas id="gameCanvas" width="980" height="735"></canvas>
+    <div id="narrative">You are Chrometor, navigating duality... Balance: 0%</div>
+    <button id="win-button" onclick="window.location.href = '2_memo.html';">Go to CEO Memo Pad</button>
+
+    <a href="1_Merch.html" class="store-link">
+        <img src="assets/Chrome Captured with texture.png" alt="Chrome Captured" style="width: 300px; height: 400px;">
+    </a>
+
+    <footer>
+        <a href="https://x.com/Chr0metor" style="color: #000;">X</a>
+        <a href="https://www.youtube.com/@chrometor" style="color: #FF0000;">Y</a>
+        <a href="https://soundcloud.com/chrometor" style="color: #FFA500;">S</a>
+        <a href="https://chrometor.bandcamp.com/" style="color: #0000FF;">B</a>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Load sprites from assets/game
+        const blobImg = new Image();
+        blobImg.src = 'assets/game/blob.png'; // 50x50 for shadows
+        const playerImg = new Image();
+        playerImg.src = 'assets/game/chrometor-sprite.png'; // 25x25 for player
+        const moneyImg = new Image();
+        moneyImg.src = 'assets/game/money-sprite.png'; // 25x25 for money
+        const crowImg = new Image();
+        crowImg.src = 'assets/game/Crow-sprite.png'; // 30x30 for crows
+        const plantImg = new Image();
+        plantImg.src = 'assets/game/Monstera.png'; // 40x40 for office plant
+        const backgroundImg = new Image();
+        backgroundImg.src = 'assets/game/Floor-Plan-Game.jpg'; // 980x735 for game background
+
+        let assetsLoaded = 0;
+        const totalAssets = 6; // Number of sprites including background
+        function assetLoaded() {
+            assetsLoaded++;
+            if (assetsLoaded === totalAssets) gameLoop();
+        }
+        [blobImg, playerImg, moneyImg, crowImg, plantImg, backgroundImg].forEach(img => img.onload = assetLoaded);
+
+        const player = { x: 50, y: 50, width: 25, height: 25, speed: 3, balance: 0 };
+        const relics = [];
+        for (let i = 0; i < 8; i++) {
+            relics.push({ x: Math.random() * 880 + 50, y: Math.random() * 685 + 25, radius: 10 });
+        }
+        const minions = [
+            { x: 300, y: 150, width: 30, height: 30, befriended: false },
+            { x: 500, y: 400, width: 30, height: 30, befriended: false },
+            { x: 750, y: 100, width: 30, height: 30, befriended: false }
+        ];
+        const shadows = [];
+        for (let i = 0; i < 6; i++) {
+            shadows.push({ x: Math.random() * 880 + 50, y: Math.random() * 685 + 25, width: 50, height: 50, dx: (Math.random() - 0.5) * 4 });
+        }
+        for (let i = 0; i < 5; i++) { // Added 5 vertically moving blobs
+            shadows.push({ x: Math.random() * 880 + 50, y: Math.random() * 685 + 25, width: 50, height: 50, dy: (Math.random() - 0.5) * 4 });
+        }
+        const money = [];
+        for (let i = 0; i < 5; i++) {
+            money.push({ x: Math.random() * 880 + 50, y: Math.random() * 685 + 25, width: 25, height: 25 });
+        }
+        const walls = [
+            { x: 0, y: 0, width: canvas.width, height: 10 }, // Top wall
+            { x: 0, y: canvas.height - 10, width: canvas.width, height: 10 }, // Bottom wall
+            { x: 0, y: 0, width: 10, height: canvas.height }, // Left wall
+            { x: canvas.width - 10, y: 0, width: 10, height: canvas.height }, // Right wall
+            { x: 100, y: 50, width: 10, height: 300 }, // Maze wall 1
+            { x: 200, y: 0, width: 10, height: 200 }, // Maze wall 2
+            { x: 300, y: 250, width: 200, height: 10 }, // Maze wall 3
+            { x: 400, y: 350, width: 10, height: 300 }, // Maze wall 4
+            { x: 600, y: 100, width: 10, height: 400 }, // Maze wall 5
+            { x: 700, y: 0, width: 10, height: 350 }, // Maze wall 6
+            { x: 800, y: 450, width: 200, height: 10 }, // Maze wall 7
+            { x: 150, y: 400, width: 150, height: 10 }, // Additional wall
+            { x: 450, y: 200, width: 10, height: 150 }, // Additional wall
+            { x: 650, y: 500, width: 200, height: 10 }, // Additional wall
+            { x: 850, y: 150, width: 10, height: 250 } // Additional wall
+        ];
+        const office = { x: canvas.width - 100, y: canvas.height - 100, width: 80, height: 80, plantWidth: 40, plantHeight: 40 };
+        let gameOver = false;
+        let message = '';
+        let hearts = []; // For "CAW!" pop-ups
+        let hpPops = []; // For "-1HP" pop-ups
+
+        // Keyboard controls
+        const keys = {};
+        document.addEventListener('keydown', (e) => keys[e.key] = true);
+        document.addEventListener('keyup', (e) => keys[e.key] = false);
+
+        // Touch controls for mobile
+        canvas.addEventListener('touchstart', handleTouch);
+        canvas.addEventListener('touchmove', handleTouch);
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            player.x = touch.clientX - rect.left - player.width / 2;
+            player.y = touch.clientY - rect.top - player.height / 2;
+        }
+
+        function collides(a, b) {
+            return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+        }
+
+        function update() {
+            if (gameOver) {
+                document.getElementById('win-button').style.display = 'block';
+                return;
+            }
+
+            const oldX = player.x;
+            const oldY = player.y;
+
+            // Player movement
+            if (keys['ArrowUp']) player.y -= player.speed;
+            if (keys['ArrowDown']) player.y += player.speed;
+            if (keys['ArrowLeft']) player.x -= player.speed;
+            if (keys['ArrowRight']) player.x += player.speed;
+
+            // Wall collisions
+            walls.forEach(wall => {
+                if (collides(player, wall)) {
+                    player.x = oldX;
+                    player.y = oldY;
+                }
+            });
+
+            // Shadow collisions
+            shadows.forEach(shadow => {
+                shadow.x += shadow.dx;
+                if (shadow.x < 0 || shadow.x > canvas.width) shadow.dx = -shadow.dx;
+                if (collides(player, shadow)) {
+                    gameOver = true;
+                    message = 'Shadow Emotion Consumed you. Game over.';
+                }
+            });
+
+            // Relic collection
+            relics.forEach((relic, i) => {
+                if (Math.hypot(player.x - relic.x, player.y - relic.y) < player.width / 2 + relic.radius) {
+                    relics.splice(i, 1);
+                    player.balance += 12.5;
+                    document.getElementById('narrative').textContent = `Balance: ${player.balance}% - The mask and self align...`;
+                }
+            });
+
+            // Minion friendship
+            minions.forEach((minion, i) => {
+                if (!minion.befriended && collides(player, minion)) {
+                    minion.befriended = true;
+                    hearts.push({ x: minion.x, y: minion.y - 20, timer: 60 });
+                }
+            });
+
+            // Money "enemy"
+            money.forEach((m, i) => {
+                if (collides(player, m)) {
+                    money.splice(i, 1);
+                    hpPops.push({ x: player.x, y: player.y - 20, timer: 60 });
+                }
+            });
+
+            // Greed lose condition
+            if (money.length === 0) {
+                gameOver = true;
+                message = 'Greed consumes you! Game over.';
+            }
+
+            // Office win check
+            if (collides(player, office) && relics.length === 0 && minions.every(m => m.befriended)) {
+                gameOver = true;
+                message = 'Office Reached! Duality Embraced!';
+            }
+
+            // Update pop-ups
+            hearts = hearts.filter(heart => heart.timer-- > 0);
+            hpPops = hpPops.filter(pop => pop.timer-- > 0);
+        }
+
+        function draw() {
+            ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+
+            // Draw maze walls (overlay on background)
+            ctx.fillStyle = '#111111';
+            walls.forEach(wall => ctx.fillRect(wall.x, wall.y, wall.width, wall.height));
+
+            // Draw player (sprite)
+            ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+
+            // Draw relics (silver spheres)
+            ctx.fillStyle = '#C0C0C0';
+            relics.forEach(relic => {
+                ctx.beginPath();
+                ctx.arc(relic.x, relic.y, relic.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Draw minions (crow sprite)
+            minions.forEach(minion => {
+                if (!minion.befriended) {
+                    ctx.drawImage(crowImg, minion.x, minion.y, minion.width, minion.height);
+                }
+            });
+
+            // Draw "CAW!" pop-ups
+            ctx.fillStyle = '#FF0000';
+            ctx.font = '20px Roboto';
+            hearts.forEach(heart => ctx.fillText('CAW!', heart.x, heart.y));
+
+            // Draw "-1HP" pop-ups
+            ctx.fillStyle = '#FF0000';
+            ctx.font = '20px Roboto';
+            hpPops.forEach(pop => ctx.fillText('-1HP', pop.x, pop.y));
+
+            // Draw shadows (blob sprite)
+            shadows.forEach(shadow => ctx.drawImage(blobImg, shadow.x, shadow.y, shadow.width, shadow.height));
+
+            // Draw money (sprite)
+            money.forEach(m => ctx.drawImage(moneyImg, m.x, m.y, m.width, m.height));
+
+            // Draw office desk
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(office.x + 10, office.y + 50, 60, 30);
+
+            // Draw office plant (sprite)
+            ctx.drawImage(plantImg, office.x + 70, office.y + 20, office.plantWidth, office.plantHeight);
+
+            // Draw office bookcase
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(office.x + 10, office.y + 10, 20, 40);
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(office.x + 10, office.y + 20);
+            ctx.lineTo(office.x + 30, office.y + 20);
+            ctx.moveTo(office.x + 10, office.y + 30);
+            ctx.lineTo(office.x + 30, office.y + 30);
+            ctx.stroke();
+
+            if (gameOver) {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = '30px Roboto';
+                ctx.fillText(message, canvas.width / 2 - 200, canvas.height / 2);
+            }
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        gameLoop();
+    </script>
+</body>
+</html>

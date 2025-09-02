@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Corp. - Music</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-image: url('assets/background.jpg'); 
+            background-repeat: repeat; 
+            background-position: center; 
+            color: #333; 
+            text-align: center; 
+            padding: 20px; 
+            font-style: italic; 
+            min-height: 1080px; 
+            display: flex; 
+            flex-direction: column; 
+            max-width: 1080px; /* Snug 1080px fit, as commanded! */
+            margin: 0 auto; 
+            position: relative; 
+        }
+        h1 { 
+            font-weight: bold; 
+            font-style: normal; 
+            font-size: 50px; /* Scaled down fer fit. */
+        }
+        h2 { 
+            font-weight: bold; 
+            font-style: normal; 
+            font-size: 28px; /* Scaled. */
+            margin-top: 30px; 
+        }
+        .album-section {
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            max-width: 820px; /* Scaled to fit 1080px. */
+            margin: 0 auto 30px auto; 
+            gap: 15px; 
+        }
+        .album-section img.album-cover { 
+            width: 400px; /* Resized, aspect preserved. */
+            height: auto; 
+            border-radius: 10px; 
+            flex-shrink: 0; 
+        }
+        .scroll-container {
+            overflow-y: auto; 
+            height: 400px; /* Resized balanced. */
+            width: 400px; 
+            border: 1px solid #ccc; 
+            padding: 8px;
+            background-color: #333; 
+            border-radius: 10px;
+            flex: 0 0 400px; 
+        }
+        ul { 
+            list-style-type: none; 
+            padding: 0; 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 8px; 
+            text-align: left; 
+        }
+        li { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            color: #C0C0C0; 
+            font-size: 14px; /* Scaled text. */
+        }
+        audio { 
+            width: 200px; /* Scaled fer fit. */
+            background-color: transparent; 
+            color: white; 
+            transition: box-shadow 0.3s ease; 
+        }
+        audio:hover { 
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8); 
+        }
+        audio::-webkit-media-controls-panel { 
+            background-color: transparent; 
+        }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-mute-button,
+        audio::-webkit-media-controls-fullscreen-button,
+        audio::-webkit-media-controls-volume-slider { 
+            color: white; 
+        }
+        audio::-webkit-media-controls-timeline { 
+            background-color: transparent; 
+        }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display { 
+            color: black; 
+        }
+        .advert { 
+            position: fixed; 
+            bottom: 15px; 
+            left: 15px; 
+            z-index: 10; 
+            width: 150px; /* Scaled to fit 1080px vibe. */
+            height: 262.5px; /* 200x350 ratio preserved. */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            background-color: #808080; 
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+            transition: box-shadow 0.3s ease; 
+        }
+        .advert:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+        .advert-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+        }
+        .advert-text { 
+            position: relative; 
+            z-index: 1; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white; /* All text white, as decreed! */
+            padding: 4px; 
+            text-align: center; 
+            font-style: normal; 
+            font-weight: bold; 
+            font-size: 12px; /* Scaled. */
+        }
+        footer { 
+            margin-top: auto; 
+            padding: 8px 0; 
+        }
+        footer a { 
+            text-decoration: none; 
+            font-style: normal; 
+            font-size: 32px; /* Scaled fer fit. */
+            margin: 0 8px; 
+            display: inline-block; 
+            padding: 8px 15px; 
+            background-color: #808080; 
+            border-radius: 15px; 
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
+            transition: box-shadow 0.3s ease; 
+        }
+        footer a:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+    </style>
+</head>
+<body>
+    <a href="0_index_Chrome_Corp.html">
+        <img src="assets/logo.png" alt="Chrome Corp Logo" style="width: 350px; height: 350px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;">
+    </a>
+
+    <h1>Discography</h1>
+
+    <h2>Schwarzschild (2019)</h2>
+    <div class="album-section">
+        <img class="album-cover" src="Schwarzschild (2019)/event horizon icon.png" alt="Schwarzschild Album Cover">
+        <div class="scroll-container">
+            <ul>
+                <li>Supernova <audio controls src="Schwarzschild (2019)/1_Supernova.wav"></audio></li>
+                <li>Schwarzschild <audio controls src="Schwarzschild (2019)/2_Schwarzschild.wav"></audio></li>
+                <li>Event Horizon <audio controls src="Schwarzschild (2019)/3_Event Horizon.wav"></audio></li>
+                <li>No Time <audio controls src="Schwarzschild (2019)/4_No Time.wav"></audio></li>
+                <li>Crystal Ball (Feat. Flux) <audio controls src="Schwarzschild (2019)/5_Crystal Ball (Feat. Flux).wav"></audio></li>
+                <li>Corona <audio controls src="Schwarzschild (2019)/6_Corona.wav"></audio></li>
+                <li>One Teaspoon (Feat. Olia Hoang) <audio controls src="Schwarzschild (2019)/7_One Teaspoon (Feat. Olia Hoang).wav"></audio></li>
+                <li>Prelude in Fm, BWV 534 <audio controls src="Schwarzschild (2019)/8_Prelude in Fm, BWV 534.wav"></audio></li>
+                <li>Warp Interlude <audio controls src="Schwarzschild (2019)/9_Warp Interlude.wav"></audio></li>
+                <li>Our Glass Earth (Feat. Julia Vocal) <audio controls src="Schwarzschild (2019)/10_Our Glass Earth (Feat. Julia Vocal).wav"></audio></li>
+                <li>Apple Pie <audio controls src="Schwarzschild (2019)/11_Apple Pie.wav"></audio></li>
+                <li>Your Mom's Still Got It On My Astroturf <audio controls src="Schwarzschild (2019)/12_Your Mom's Still Got It On My Astroturf.wav"></audio></li>
+                <li>Neil A. <audio controls src="Schwarzschild (2019)/13_Neil A..wav"></audio></li>
+                <li>3C321 <audio controls src="Schwarzschild (2019)/14_3C321.wav"></audio></li>
+                <li>URANUS <audio controls src="Schwarzschild (2019)/15_URANUS.wav"></audio></li>
+                <li>Leftovers <audio controls src="Schwarzschild (2019)/16_Leftovers.wav"></audio></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Stormlife (2018)</h2>
+    <div class="album-section">
+        <img class="album-cover" src="Stormlife (2018)/Stormlife.jpg" alt="Stormlife Album Cover">
+        <div class="scroll-container">
+            <ul>
+                <li>Weather Channel <audio controls src="Stormlife (2018)/1_Weather Channel.wav"></audio></li>
+                <li>Stormlife <audio controls src="Stormlife (2018)/2_Stormlife.wav"></audio></li>
+                <li>Lift <audio controls src="Stormlife (2018)/3_Lift.wav"></audio></li>
+                <li>Ocean eyes <audio controls src="Stormlife (2018)/4_Ocean eyes.wav"></audio></li>
+                <li>Fragile Towers <audio controls src="Stormlife (2018)/5_Fragile Towers.wav"></audio></li>
+                <li>Fog Interlude <audio controls src="Stormlife (2018)/6_Fog Interlude.wav"></audio></li>
+                <li>Mother Sky <audio controls src="Stormlife (2018)/7_Mother Sky.wav"></audio></li>
+                <li>Magma Mountain <audio controls src="Stormlife (2018)/8_Magma Mountain.wav"></audio></li>
+                <li>Power of Man <audio controls src="Stormlife (2018)/9_Power of Man.wav"></audio></li>
+                <li>Pyroclastic Paroxysm <audio controls src="Stormlife (2018)/10_Pyroclastic Paroxysm.wav"></audio></li>
+                <li>Ashes Around <audio controls src="Stormlife (2018)/11_Ashes Around.wav"></audio></li>
+                <li>Hourglass Earth <audio controls src="Stormlife (2018)/12_Hourglass Earth.wav"></audio></li>
+                <li>Ocean Eyes (Conviction Remix) <audio controls src="Stormlife (2018)/13_Ocean Eyes (Conviction Remix).wav"></audio></li>
+            </ul>
+        </div>
+    </div>
+
+    <a id="random-advert" class="advert" href="#">
+        <img id="advert-img" class="advert-img" src="" alt="Advert">
+        <div id="advert-text" class="advert-text"></div>
+    </a>
+
+    <footer>
+        <a href="https://x.com/Chr0metor" style="color: #000;">X</a>
+        <a href="https://www.youtube.com/@chrometor" style="color: #FF0000;">Y</a>
+        <a href="https://soundcloud.com/chrometor" style="color: #FFA500;">S</a>
+        <a href="https://chrometor.bandcamp.com/" style="color: #0000FF;">B</a>
+    </footer>
+
+    <script>
+        const ads = [
+            { src: 'adverts/already-under-my-genjutsu-2.gif', text: 'Free Disillusionment available.', color: 'white', link: '1_merch.html' },
+            { src: 'adverts/Dangerous-Twerk.gif', text: 'GET BIG! ORDER NOW!', color: 'white', link: '1_merch.html' },
+            { src: 'adverts/Garage-Rizz.gif', text: 'Does your Masterplan need a Master-makeover?', color: 'white', link: '1_merch.html' },
+            { src: 'adverts/Heart-Giver.gif', text: '', color: 'white', link: '1_game.html' },
+            { src: 'adverts/Kenku minion.jpg', text: 'Join Today!', color: 'white', link: '1_Minion_Application.html' },
+            { src: 'adverts/laugh-loop.gif', text: 'Cure DEPRESSION!', color: 'white', link: '1_merch.html' },
+            { src: 'adverts/Obelisk-Merry-Christmas.gif', text: 'Are you FORGETTING something?', color: 'white', link: '1_merch.html' },
+            { src: 'adverts/Rose-Delivery.gif', text: 'Mysterious Singles in your area.', color: 'white', link: '1_merch.html' }
+        ];
+        const randomAd = ads[Math.floor(Math.random() * ads.length)];
+        document.getElementById('random-advert').href = randomAd.link;
+        document.getElementById('advert-img').src = randomAd.src;
+        const textDiv = document.getElementById('advert-text');
+        textDiv.textContent = randomAd.text;
+        textDiv.style.color = randomAd.color;
+    </script>
+</body>
+</html>

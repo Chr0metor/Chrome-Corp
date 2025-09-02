@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Corp. - Shoppe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+        html { height: 100%; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: url('assets/background.jpg') repeat center center / auto; 
+            color: #fff; 
+            margin: 0 auto; 
+            padding: 0; 
+            font-weight: 300; 
+            font-style: italic; 
+            min-height: 1920px; 
+            max-width: 1080px; 
+            position: relative; 
+        }
+        #logo-overlay { display: block; margin: 20px auto; width: 450px; height: 450px; cursor: pointer; }
+        h1 { font-weight: 700; font-style: normal; color: #333; text-transform: uppercase; font-size: 72px; margin: 0; text-align: center; }
+        p.mantra { text-align: center; font-size: 24px; margin: 10px 0; font-style: italic; color: #333; }
+        #merch-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 20px; }
+        .merch-item { text-align: center; max-width: 300px; }
+        .merch-item img { width: 100%; height: auto; box-shadow: 0 0 15px #c0c0c0; cursor: pointer; }
+        .merch-item h3 { font-size: 24px; margin: 10px 0 5px; color: #333; }
+        .merch-item p { font-size: 16px; color: #333; } /* Dark gray */
+        #social-footer { position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        #social-footer a { text-decoration: none; background: #333; padding: 10px; border-radius: 5px; display: flex; align-items: center; justify-content: center; transition: box-shadow 0.3s; font-size: 42px; font-weight: bold; width: 60px; height: 60px; }
+        #social-footer a:hover { box-shadow: 0 0 15px #c0c0c0; }
+        .logo-x { color: #000; }
+        .logo-youtube { color: #f00; }
+        .logo-soundcloud { color: #f50; }
+        .logo-bandcamp { color: #00f; }
+    </style>
+</head>
+<body>
+    <img id="logo-overlay" src="assets/logo.png" alt="Chrome Corp Logo" onclick="window.location.href='0_index_Chrome_corp.html';">
+    <h1>Chrome Corp.</h1>
+    <p class="mantra">Merch of Virtue</p>
+    <section id="merch-grid">
+        <div class="merch-item">
+            <img src="assets/merch/schwarzschild-tee.jpg" alt="Home-made Schwarzschild Tee" onclick="window.location.href='https://chrometor.bandcamp.com/merch/schwarzschild-t-shirt';">
+            <h3>Home-made Schwarzschild Tee</h3>
+            <p>Show everyone the edgy, poetic soul underneath with this classic T-shirt.</p>
+        </div>
+        <div class="merch-item">
+            <img src="assets/merch/chrome-corp-patch.jpg" alt="Chrome Corp Patch">
+            <h3>Chrome Corp Patch</h3>
+            <p>A shiny badge which makes you apart of the team of janitors working for Chrome Corp.</p>
+        </div>
+        <div class="merch-item">
+            <img src="assets/merch/chrome-corp-poster.jpg" alt="Chrome Corp Poster">
+            <h3>Chrome Corp Poster</h3>
+            <p>Movie Deal pending, but you can enjoy the origin story of Chrometor in your imagination with the help of this poster.</p>
+        </div>
+    </section>
+    <div id="social-footer">
+        <a href="https://x.com/Chr0metor" target="_blank" class="logo-x">X</a>
+        <a href="https://www.youtube.com/@chrometor" target="_blank" class="logo-youtube">Y</a>
+        <a href="https://soundcloud.com/chrometor" target="_blank" class="logo-soundcloud">S</a>
+        <a href="https://chrometor.bandcamp.com/" target="_blank" class="logo-bandcamp">B</a>
+    </div>
+</body>
+</html>
