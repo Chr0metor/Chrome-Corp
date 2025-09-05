@@ -2,122 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Corp. - Join Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes it responsive for phones -->
+    <meta name="description" content="High-Trust Brand seeks worthy minions. Join Chrome Corp as a Kenku, AI Clone, Janitor, or custom character—apply now for fun benefits!"> <!-- SEO for traffic -->
+    <meta name="keywords" content="join Chrome Corp, minion application, high-trust brand, AI clone, Kenku, futuristic minions, Chrometor"> <!-- More SEO to attract searches -->
+    <title>Join Chrome Corp as a Minion</title>
     <style>
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            background-image: url('assets/background.jpg'); 
-            background-size: cover; 
-            background-position: center; 
-            color: #333; 
-            text-align: center; 
-            padding: 20px; 
-            font-style: italic; 
-            min-height: 1080px; 
-            display: flex; 
-            flex-direction: column; 
-            max-width: 1080px; 
-            margin: 0 auto; 
+        body {
+            background-image: url('assets/background.jpg'); /* Your background image path */
+            background-repeat: repeat; /* Repeats instead of stretching, no pixelation */
+            background-size: auto; /* Keeps original size for repeating tiles */
+            font-family: Arial, sans-serif; /* Basic font for readability */
+            margin: 0;
+            padding: 20px;
+            color: #fff; /* Assuming dark theme for chrome vibe */
+            max-width: 1080px; /* Desktop width as intended */
+            margin: 0 auto; /* Centers on desktop */
         }
-        h1 { 
-            font-weight: bold; 
-            font-style: normal; 
-            font-size: 72px; 
+        form {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent for overlay on background */
+            padding: 20px;
+            border-radius: 10px;
         }
-        p { margin: 10px 0; }
-        form { 
-            max-width: 600px; 
-            margin: 0 auto; 
-            text-align: left; 
-            background-color: #333; 
-            padding: 20px; 
-            border-radius: 10px; 
-            color: #fff; 
+        label {
+            display: block;
+            margin-top: 10px;
         }
-        label { font-style: italic; color: #fff; }
-        input, select, textarea { 
-            width: 98%; 
-            margin-bottom: 10px; 
-            padding: 8px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            font-style: italic; 
-            color: #333; 
-            box-sizing: border-box; 
+        input, select, textarea {
+            width: 100%; /* Full width for mobile ease */
+            padding: 8px;
+            margin-top: 5px;
         }
-        button { 
-            background-color: #C0C0C0; 
-            color: #333; 
-            padding: 10px; 
-            border: none; 
-            cursor: pointer; 
-            border-radius: 5px; 
-            width: 100%; 
-            font-style: italic; 
-            font-size: 42px; /* Boomin' size 42, as decreed! */
-            transition: box-shadow 0.3s ease; 
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #808080; /* Chrome gray vibe */
+            color: #fff;
+            border: none;
+            cursor: pointer;
         }
-        button:hover { 
-            box-shadow: 0 0 15px #FFFFFF; 
+        #great-benefits {
+            width: 100%; /* Matches form/image width */
+            text-align: center;
+            margin-top: 20px;
         }
-        .graphic-space { 
-            width: 400px; 
-            height: 900px; 
-            margin: 20px auto; 
-            background-image: url('adverts/minion.JPG'); 
-            background-size: cover; 
-            background-position: center; 
-            position: relative; 
-            border-radius: 10px; 
+        /* Media query for phones: Adjust for screens under 768px */
+        @media (max-width: 767px) {
+            body {
+                padding: 10px; /* Less padding on small screens */
+                max-width: 100%; /* Full width for phones */
+            }
+            form {
+                padding: 10px;
+            }
         }
-        .graphic-overlay { 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 100%; 
-            background-color: rgba(0, 0, 0, 0.7); 
-            color: white; 
-            text-align: center; 
-            padding: 10px; 
-            font-weight: bold; 
-            font-size: 42px; /* Boomin' size 42, glowin' grand! */
-        }
-        #custom-description { margin-top: 10px; }
-        footer { 
-            margin-top: auto; 
-            padding: 10px 0; 
-        }
-        footer a { 
-            text-decoration: none; 
-            font-style: normal; 
-            font-size: 42px; 
-            margin: 0 10px; 
-            display: inline-block; 
-            padding: 10px 20px; 
-            background-color: #808080; 
-            border-radius: 20px; 
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
-            transition: box-shadow 0.3s ease; 
-        }
-        footer a:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
     </style>
 </head>
 <body>
-    <a href="index.html">
-        <img src="assets/logo.png" alt="Chrome Corp Logo" style="width: 450px; height: 450px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
-    </a>
 
-    <h1>JOIN CHROME CORP.!</h1> <!-- Title roared as yer will! -->
+    <h1>JOIN CHROME CORP.!</h1>
 
     <p>Fill out below—sends straight to the CEO's inbox.</p>
 
-    <form action="mailto:chrom3teor@gmail.com" method="get">
-        <label for="minion-name">Minion Name:</label>
-        <input type="text" id="minion-name" name="minion-name" required>
+    <form action="https://formspree.io/f/meolpryn" method="POST">
+        <label>Minion Name:</label>
+        <input type="text" name="minion_name" required>
 
-        <label for="minion-type">Minion Type:</label>
-        <select id="minion-type" name="minion-type">
+        <label>Minion Type:</label>
+        <select name="minion_type">
             <option>Select...</option>
             <option>Kenku</option>
             <option>AI Clone</option>
@@ -125,60 +76,50 @@
             <option>Custom</option>
         </select>
 
-        <div id="custom-description" style="display: none;">
-            <label for="custom-desc">Describe your custom supportive character:</label>
-            <textarea id="custom-desc" name="custom-desc"></textarea>
-        </div>
+        <label>Describe your custom supportive character:</label>
+        <textarea name="custom_description"></textarea>
 
-        <label for="email">Email to receive minion-only newsletter:</label>
-        <input type="email" id="email" name="email" required>
+        <label>Email to receive minion-only newsletter:</label>
+        <input type="email" name="email" required>
 
-        <label for="x-handle">X Handle:</label>
-        <input type="text" id="x-handle" name="x-handle">
+        <label>X Handle:</label>
+        <input type="text" name="x_handle">
 
-        <label for="useful-skill">Most Useful Skill:</label>
-        <input type="text" id="useful-skill" name="useful-skill">
+        <label>Most Useful Skill:</label>
+        <input type="text" name="useful_skill">
 
-        <label for="least-useful-skill">Least Useful Skill:</label>
-        <input type="text" id="least-useful-skill" name="least-useful-skill">
+        <label>Least Useful Skill:</label>
+        <input type="text" name="least_useful_skill">
 
-        <label for="why-join">Why Join?</label>
-        <textarea id="why-join" name="why-join"></textarea>
+        <label>Why Join?</label>
+        <textarea name="why_join"></textarea>
 
-        <label for="favorite-vibe">Favorite Vibe:</label>
-        <input type="text" id="favorite-vibe" name="favorite-vibe">
+        <label>Favorite Vibe:</label>
+        <input type="text" name="favorite_vibe">
 
-        <label for="favorite-snack">Favorite Snack:</label>
-        <input type="text" id="favorite-snack" name="favorite-snack">
+        <label>Favorite Snack:</label>
+        <input type="text" name="favorite_snack">
 
-        <label for="preferred-reward">Preferred Reward:</label>
-        <input type="text" id="preferred-reward" name="preferred-reward">
+        <label>Preferred Reward:</label>
+        <input type="text" name="preferred_reward">
+
+        <input type="hidden" name="_subject" value="New Chrome Corp Minion Application!">
 
         <button type="submit">Apply Now!</button>
     </form>
 
-    <div class="graphic-space">
-        <div class="graphic-overlay">Great Benefits!</div>
+    <div id="great-benefits">
+        <h2>Great Benefits!</h2>
+        <!-- Assuming minion.jpg is here; adjust src if needed -->
+        <img src="assets/minion.jpg" alt="Chrome Corp Minion Benefits" style="width: 100%; max-width: 1080px;"> <!-- Matches width for desktop/mobile -->
     </div>
 
-    <script>
-        document.getElementById('minion-type').addEventListener('change', function() {
-            var customDiv = document.getElementById('custom-description');
-            if (this.value === 'Custom') {
-                customDiv.style.display = 'block';
-            } else {
-                customDiv.style.display = 'none';
-            }
-        });
-    </script>
-
     <footer>
-        <a href="https://x.com/Chr0metor" style="color: #000;">X</a>
-        <a href="https://www.youtube.com/@chrometor" style="color: #FF0000;">Y</a>
-        <a href="https://soundcloud.com/chrometor" style="color: #FFA500;">S</a>
-        <a href="https://chrometor.bandcamp.com/" style="color: #0000FF;">B</a>
+        <a href="https://x.com">X</a>
+        <a href="https://youtube.com">Y</a>
+        <a href="https://spotify.com">S</a>
+        <a href="https://bandcamp.com">B</a>
     </footer>
+
 </body>
 </html>
-
-
