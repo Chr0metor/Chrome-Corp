@@ -2,66 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes it responsive for phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive for phones -->
     <meta name="description" content="High-Trust Brand seeks worthy minions. Join Chrome Corp as a Kenku, AI Clone, Janitor, or custom character—apply now for fun benefits!"> <!-- SEO for traffic -->
-    <meta name="keywords" content="join Chrome Corp, minion application, high-trust brand, AI clone, Kenku, futuristic minions, Chrometor"> <!-- More SEO to attract searches -->
+    <meta name="keywords" content="join Chrome Corp, minion application, high-trust brand, AI clone, Kenku, futuristic minions, Chrometor"> <!-- More SEO -->
     <title>Join Chrome Corp as a Minion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Roboto font -->
     <style>
         body {
-            background-image: url('assets/background.jpg'); /* Your background image path */
-            background-repeat: repeat; /* Repeats instead of stretching, no pixelation */
-            background-size: auto; /* Keeps original size for repeating tiles */
-            font-family: Arial, sans-serif; /* Basic font for readability */
+            background-image: url('assets/background.jpg'); /* Your background image */
+            background-repeat: repeat; /* Repeats without stretching or pixelation */
+            background-size: auto; /* Keeps original size for tiling */
+            font-family: 'Roboto', sans-serif; /* Roboto font for the page */
             margin: 0;
             padding: 20px;
-            color: #fff; /* Assuming dark theme for chrome vibe */
+            color: #fff; /* Default white text for chrome vibe */
             max-width: 1080px; /* Desktop width as intended */
             margin: 0 auto; /* Centers on desktop */
         }
+        h1 {
+            color: #333; /* Dark gray for title */
+            font-size: 72px; /* Size 72 */
+            font-weight: bold; /* Bold */
+            text-align: center; /* Centered */
+            margin-bottom: 10px;
+        }
+        p.intro {
+            color: #333; /* Dark gray */
+            font-size: 30px; /* Size 30 */
+            text-align: center;
+            margin-bottom: 20px;
+        }
         form {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent for overlay on background */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
             padding: 20px;
             border-radius: 10px;
         }
         label {
             display: block;
             margin-top: 10px;
+            font-style: italic; /* Italics for labels */
         }
         input, select, textarea {
-            width: 100%; /* Full width for mobile ease */
+            width: 100%; /* Full width for mobile */
             padding: 8px;
             margin-top: 5px;
         }
         button {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #808080; /* Chrome gray vibe */
+            padding: 15px 30px; /* Larger button */
+            background-color: #c0c0c0; /* Silver base */
             color: #fff;
             border: none;
             cursor: pointer;
+            font-size: 24px; /* Larger text */
+            border-radius: 5px;
+            box-shadow: 0 0 10px #c0c0c0; /* Glowing silver effect */
+            transition: box-shadow 0.3s; /* Smooth glow */
+        }
+        button:hover {
+            box-shadow: 0 0 20px #fff; /* Enhanced glow on hover */
         }
         #great-benefits {
-            width: 100%; /* Matches form/image width */
+            position: relative; /* For overlay */
+            width: 100%; /* Matches form width */
             text-align: center;
             margin-top: 20px;
         }
+        #great-benefits img {
+            width: 100%; /* Matches width for desktop/mobile */
+            max-width: 1080px; /* Caps for desktop */
+        }
+        #great-benefits .overlay {
+            position: absolute;
+            bottom: 10px; /* At the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(128, 128, 128, 0.8); /* Gray rectangle */
+            color: #fff; /* White text */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer a {
+            margin: 0 10px;
+            color: #fff; /* Default white */
+            text-decoration: none;
+            font-size: 42px; /* Size 42 */
+            display: inline-block;
+            background-color: #808080; /* Gray background */
+            border-radius: 50%; /* Squircles (rounded squares) */
+            width: 60px; /* Square size */
+            height: 60px;
+            line-height: 60px; /* Center text */
+        }
+        footer a.x { color: #000; } /* Black for X */
+        footer a.y { color: #ff0000; } /* Red for Y */
+        footer a.s { color: #ffa500; } /* Orange for S */
+        footer a.b { color: #0000ff; } /* Blue for B */
         /* Media query for phones: Adjust for screens under 768px */
         @media (max-width: 767px) {
             body {
-                padding: 10px; /* Less padding on small screens */
-                max-width: 100%; /* Full width for phones */
+                padding: 10px; /* Less padding on mobile */
+                max-width: 100%; /* Full width on phones */
             }
             form {
                 padding: 10px;
+            }
+            h1 {
+                font-size: 48px; /* Smaller title on mobile */
+            }
+            p.intro {
+                font-size: 20px; /* Smaller intro on mobile */
+            }
+            footer a {
+                font-size: 28px; /* Smaller footer on mobile */
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Logo centered above form -->
+    <img src="assets/logo.jpg" alt="Chrome Corp Logo" style="display: block; margin: 0 auto 20px; max-width: 100%;">
+
     <h1>JOIN CHROME CORP.!</h1>
 
-    <p>Fill out below—sends straight to the CEO's inbox.</p>
+    <p class="intro">Fill out below—sends straight to the CEO's mailbox.</p>
 
     <form action="https://formspree.io/f/meolpryn" method="POST">
         <label>Minion Name:</label>
@@ -109,16 +183,15 @@
     </form>
 
     <div id="great-benefits">
-        <h2>Great Benefits!</h2>
-        <!-- Assuming minion.jpg is here; adjust src if needed -->
-        <img src="assets/minion.jpg" alt="Chrome Corp Minion Benefits" style="width: 100%; max-width: 1080px;"> <!-- Matches width for desktop/mobile -->
+        <img src="adverts/minion.JPG" alt="Chrome Corp Minion Benefits Image">
+        <div class="overlay">Great Benefits!</div>
     </div>
 
     <footer>
-        <a href="https://x.com">X</a>
-        <a href="https://youtube.com">Y</a>
-        <a href="https://spotify.com">S</a>
-        <a href="https://bandcamp.com">B</a>
+        <a href="https://x.com" class="x">X</a>
+        <a href="https://youtube.com" class="y">Y</a>
+        <a href="https://spotify.com" class="s">S</a>
+        <a href="https://bandcamp.com" class="b">B</a>
     </footer>
 
 </body>
