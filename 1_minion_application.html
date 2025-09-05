@@ -34,7 +34,7 @@
         }
         form {
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
-            padding: 20px 40px; /* Added left/right margins for spacing (no bleed) */
+            padding: 20px 40px; /* Left/right margins for spacing (no bleed) */
             border-radius: 10px;
         }
         label {
@@ -74,12 +74,12 @@
             margin-top: 20px;
         }
         #great-benefits img {
-            width: 400px; /* Resized to 400px width */
-            height: 900px; /* Resized to 900px height */
+            width: 400px; /* Width under 400px */
+            height: auto; /* Native aspect ratio */
         }
         #great-benefits .overlay {
             position: absolute;
-            bottom: 10px; /* At the bottom */
+            bottom: 20px; /* Adjusted bottom to avoid overlap */
             left: 50%;
             transform: translateX(-50%);
             background-color: #808080; /* Gray rectangle */
@@ -88,7 +88,7 @@
             border-radius: 5px;
             font-size: 24px;
             font-weight: bold;
-            width: 400px; /* Resized to 400px for banner */
+            width: 400px; /* Matches image width exactly */
         }
         footer {
             text-align: center;
@@ -147,12 +147,14 @@
 </head>
 <body>
 
-    <!-- Logo centered above form -->
-    <img src="assets/logo.png" alt="Chrome Corp Logo" style="display: block; margin: 0 auto 20px; max-width: 100%;">
+    <!-- Logo centered above form, resized and linked to index -->
+    <a href="index.html">
+        <img src="assets/logo.png" alt="Chrome Corp Logo" style="display: block; margin: 0 auto 20px; width: 450px; height: 450px;">
+    </a>
 
     <h1>JOIN CHROME CORP.!</h1>
 
-    <p class="intro">Fill out below—sends straight to the CEO's mailbox.</p>
+    <p class="intro">Fill out below: send your application to the CEO!</p>
 
     <form action="https://formspree.io/f/meolpryn" method="POST">
         <label>Minion Name:</label>
