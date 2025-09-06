@@ -2,248 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Corp. - Music</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive for phones -->
+    <meta name="description" content="Chrometor discography: Stream Ghostmaster Instrumental, Schwarzschild, and Stormlife albums—high-trust brand music for futuristic vibes. Join the Chrome Corp empire!"> <!-- SEO for traffic -->
+    <meta name="keywords" content="Chrometor discography, Schwarzschild album, Stormlife tracks, Ghostmaster Instrumental, futuristic music, Chrome Corp brand"> <!-- More SEO to attract searches -->
+    <title>Chrome Corp Discography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Roboto font for consistency -->
     <style>
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            background-image: url('assets/background.jpg'); 
-            background-repeat: repeat; 
-            background-position: center; 
-            color: #333; 
-            text-align: center; 
-            padding: 20px; 
-            font-style: italic; 
-            min-height: 1080px; 
-            display: flex; 
-            flex-direction: column; 
-            max-width: 1080px; /* Snug 1080px fit, as commanded! */
-            margin: 0 auto; 
-            position: relative; 
+        body {
+            background-image: url('assets/background.jpg'); /* Site-wide background for brand harmony */
+            background-repeat: repeat; /* Repeats without stretching */
+            background-size: auto; /* Keeps original size */
+            font-family: 'Roboto', sans-serif; /* Roboto font */
+            margin: 0;
+            padding: 20px;
+            color: #fff; /* White text for chrome vibe */
+            max-width: 1080px; /* Desktop width as intended */
+            margin: 0 auto; /* Centers on desktop */
         }
-        h1 { 
-            font-weight: bold; 
-            font-style: normal; 
-            font-size: 50px; /* Scaled down fer fit. */
+        h1 {
+            color: #333; /* Dark gray for title */
+            font-size: 72px; /* Large title */
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        h2 { 
-            font-weight: bold; 
-            font-style: normal; 
-            font-size: 28px; /* Scaled. */
-            margin-top: 30px; 
+        .embed-container {
+            margin: 20px auto; /* Centered embeds */
+            max-width: 450px; /* Matches embed width for desktop */
+            text-align: center;
         }
-        .album-section {
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-start; 
-            max-width: 820px; /* Scaled to fit 1080px. */
-            margin: 0 auto 30px auto; 
-            gap: 15px; 
+        iframe {
+            width: 100%; /* Responsive scaling */
+            height: auto; /* Maintain aspect */
         }
-        .album-section img.album-cover { 
-            width: 400px; /* Resized, aspect preserved. */
-            height: auto; 
-            border-radius: 10px; 
-            flex-shrink: 0; 
+        footer {
+            text-align: center;
+            margin-top: 40px;
         }
-        .scroll-container {
-            overflow-y: auto; 
-            height: 400px; /* Resized balanced. */
-            width: 400px; 
-            border: 1px solid #ccc; 
-            padding: 8px;
-            background-color: #333; 
-            border-radius: 10px;
-            flex: 0 0 400px; 
+        footer a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 42px;
+            display: inline-block;
+            background-color: #808080;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
         }
-        ul { 
-            list-style-type: none; 
-            padding: 0; 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 8px; 
-            text-align: left; 
+        footer a.x { color: #000; }
+        footer a.y { color: #ff0000; }
+        footer a.s { color: #ffa500; }
+        footer a.b { color: #0000ff; }
+        /* Media query for phones */
+        @media (max-width: 767px) {
+            body {
+                padding: 10px;
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 48px;
+            }
+            .embed-container {
+                max-width: 100%;
+            }
+            footer a {
+                font-size: 28px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+            }
         }
-        li { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            color: #C0C0C0; 
-            font-size: 14px; /* Scaled text. */
-        }
-        audio { 
-            width: 200px; /* Scaled fer fit. */
-            background-color: transparent; 
-            color: white; 
-            transition: box-shadow 0.3s ease; 
-        }
-        audio:hover { 
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8); 
-        }
-        audio::-webkit-media-controls-panel { 
-            background-color: transparent; 
-        }
-        audio::-webkit-media-controls-play-button,
-        audio::-webkit-media-controls-mute-button,
-        audio::-webkit-media-controls-fullscreen-button,
-        audio::-webkit-media-controls-volume-slider { 
-            color: white; 
-        }
-        audio::-webkit-media-controls-timeline { 
-            background-color: transparent; 
-        }
-        audio::-webkit-media-controls-current-time-display,
-        audio::-webkit-media-controls-time-remaining-display { 
-            color: black; 
-        }
-        .advert { 
-            position: fixed; 
-            bottom: 15px; 
-            left: 15px; 
-            z-index: 10; 
-            width: 150px; /* Scaled to fit 1080px vibe. */
-            height: 262.5px; /* 200x350 ratio preserved. */
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-end; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            background-color: #808080; 
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
-            transition: box-shadow 0.3s ease; 
-        }
-        .advert:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
-        .advert-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-        }
-        .advert-text { 
-            position: relative; 
-            z-index: 1; 
-            background-color: rgba(0, 0, 0, 0.7); 
-            color: white; /* All text white, as decreed! */
-            padding: 4px; 
-            text-align: center; 
-            font-style: normal; 
-            font-weight: bold; 
-            font-size: 12px; /* Scaled. */
-        }
-        footer { 
-            margin-top: auto; 
-            padding: 8px 0; 
-        }
-        footer a { 
-            text-decoration: none; 
-            font-style: normal; 
-            font-size: 32px; /* Scaled fer fit. */
-            margin: 0 8px; 
-            display: inline-block; 
-            padding: 8px 15px; 
-            background-color: #808080; 
-            border-radius: 15px; 
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); 
-            transition: box-shadow 0.3s ease; 
-        }
-        footer a:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
     </style>
 </head>
 <body>
-    <a href="index.html">
-        <img src="assets/logo.png" alt="Chrome Corp Logo" style="width: 450px; height: 450px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;">
-    </a>
 
     <h1>Discography</h1>
 
-    <h2>Schwarzschild (2019)</h2>
-    <div class="album-section">
-        <img class="album-cover" src="schwarzschild (2019)/schwarzschild.jpg" alt="schwarzschild album cover">
-        <div class="scroll-container">
-            <ul>
-                <li>Supernova <audio controls src="schwarzschild (2019)/1_supernova.wav"></audio></li>
-                <li>Schwarzschild <audio controls src="schwarzschild (2019)/2_schwarzschild.wav"></audio></li>
-                <li>Event Horizon <audio controls src="schwarzschild (2019)/3_event horizon.wav"></audio></li>
-                <li>No Time <audio controls src="schwarzschild (2019)/4_no time.wav"></audio></li>
-                <li>Crystal Ball (Feat. Flux) <audio controls src="Schwarzschild (2019)/5_crystal ball (Feat. Flux).wav"></audio></li>
-                <li>Corona <audio controls src="schwarzschild (2019)/6_corona.wav"></audio></li>
-                <li>One Teaspoon (Feat. Olia Hoang) <audio controls src="schwarzschild (2019)/7_one teaspoon (feat. olia hoang).wav"></audio></li>
-                <li>Prelude in Fm, BWV 534 <audio controls src="schwarzschild (2019)/8_prelude in fm, bwv 534.wav"></audio></li>
-                <li>Warp Interlude <audio controls src="schwarzschild (2019)/9_warp interlude.wav"></audio></li>
-                <li>Our Glass Earth (Feat. Julia Vocal) <audio controls src="schwarzschild (2019)/10_our glass earth (feat. julia vocal).wav"></audio></li>
-                <li>Apple Pie <audio controls src="schwarzschild (2019)/11_apple pie.mp3"></audio></li>
-                <li>Your Mom's Still Got It On My Astroturf <audio controls src="schwarzschild (2019)/12_your mom's still got it on my astroturf.wav"></audio></li>
-                <li>Neil A. <audio controls src="schwarzschild (2019)/13_neil a..wav"></audio></li>
-                <li>3C321 <audio controls src="schwarzschild (2019)/14_3c321.wav"></audio></li>
-                <li>URANUS <audio controls src="schwarzschild (2019)/15_uranus.wav"></audio></li>
-                <li>Leftovers <audio controls src="schwarzschild (2019)/16_Leftovers.wav"></audio></li>
-            </ul>
-        </div>
+    <!-- Ghostmaster at top -->
+    <div class="embed-container">
+        <iframe style="border: 0; width: 450px; height: 542px;" src="https://bandcamp.com/EmbeddedPlayer/track=3031425076/size=large/bgcol=333333/linkcol=e32c14/tracklist=false/transparent=true/" seamless><a href="https://chrometor.bandcamp.com/track/ghostmaster-instrumental">Ghostmaster (Instrumental) by Chrometor</a></iframe>
     </div>
 
-    <h2>Stormlife (2018)</h2>
-    <div class="album-section">
-        <img class="album-cover" src="stormlife (2018)/stormlife.jpg" alt="Stormlife Album Cover">
-        <div class="scroll-container">
-            <ul>
-                <li>Weather Channel <audio controls src="stormlife (2018)/1_weather channel.wav"></audio></li>
-                <li>Stormlife <audio controls src="stormlife (2018)/2_stormlife.wav"></audio></li>
-                <li>Lift <audio controls src="stormlife (2018)/3_lift.wav"></audio></li>
-                <li>Ocean eyes <audio controls src="stormlife (2018)/4_ocean eyes.wav"></audio></li>
-                <li>Fragile Towers <audio controls src="stormlife (2018)/5_fragile towers.wav"></audio></li>
-                <li>Fog Interlude <audio controls src="stormlife (2018)/6_fog interlude.wav"></audio></li>
-                <li>Mother Sky <audio controls src="stormlife (2018)/7_mother sky.wav"></audio></li>
-                <li>Magma Mountain <audio controls src="stormlife (2018)/8_magma mountain.wav"></audio></li>
-                <li>Power of Man <audio controls src="stormlife (2018)/9_power of man.wav"></audio></li>
-                <li>Pyroclastic Paroxysm <audio controls src="stormlife (2018)/10_pyroclastic paroxysm.wav"></audio></li>
-                <li>Ashes Around <audio controls src="stormlife (2018)/11_ashes around.wav"></audio></li>
-                <li>Hourglass Earth <audio controls src="stormlife (2018)/12_hourglass earth.wav"></audio></li>
-                <li>Ocean Eyes (Conviction Remix) <audio controls src="stormlife (2018)/13_ocean eyes (conviction remix).wav"></audio></li>
-            </ul>
-        </div>
+    <!-- Schwarzschild below -->
+    <div class="embed-container">
+        <iframe style="border: 0; width: 450px; height: 570px;" src="https://bandcamp.com/EmbeddedPlayer/album=3635959747/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/transparent=true/" seamless><a href="https://chrometor.bandcamp.com/album/schwarzschild">Schwarzschild by Chrometor</a></iframe>
     </div>
 
-    <a id="random-advert" class="advert" href="#">
-        <img id="advert-img" class="advert-img" src="" alt="Advert">
-        <div id="advert-text" class="advert-text"></div>
-    </a>
+    <!-- Stormlife below -->
+    <div class="embed-container">
+        <iframe style="border: 0; width: 450px; height: 570px;" src="https://bandcamp.com/EmbeddedPlayer/album=1241405906/size=large/bgcol=333333/linkcol=4ec5ec/tracklist=false/transparent=true/" seamless><a href="https://chrometor.bandcamp.com/album/stormlife">Stormlife by Chrometor</a></iframe>
+    </div>
 
     <footer>
-        <a href="https://x.com/Chr0metor" style="color: #000;">X</a>
-        <a href="https://www.youtube.com/@chrometor" style="color: #FF0000;">Y</a>
-        <a href="https://soundcloud.com/chrometor" style="color: #FFA500;">S</a>
-        <a href="https://chrometor.bandcamp.com/" style="color: #0000FF;">B</a>
+        <a href="https://x.com" class="x">X</a>
+        <a href="https://youtube.com" class="y">Y</a>
+        <a href="https://spotify.com" class="s">S</a>
+        <a href="https://bandcamp.com" class="b">B</a>
     </footer>
 
-    <script>
-        const ads = [
-            { src: 'adverts/already-under-my-genjutsu-2.gif', text: 'Free Disillusionment available.', color: 'white', link: '1_merch.html' },
-            { src: 'adverts/dangerous-twerk.gif', text: 'GET BIG! ORDER NOW!', color: 'white', link: '1_merch.html' },
-            { src: 'adverts/garage-rizz.gif', text: 'Does your Masterplan need a Master-makeover?', color: 'white', link: '1_merch.html' },
-            { src: 'adverts/heart-giver.gif', text: '', color: 'white', link: '1_game.html' },
-            { src: 'adverts/minion.JPG', text: 'Join Today!', color: 'white', link: '1_minion_application.html' },
-            { src: 'adverts/laugh-loop.gif', text: 'Cure DEPRESSION!', color: 'white', link: '1_merch.html' },
-            { src: 'adverts/obelisk-merry-christmas.gif', text: 'Are you FORGETTING something?', color: 'white', link: '1_merch.html' },
-            { src: 'adverts/rose-delivery.gif', text: 'Mysterious Singles in your area.', color: 'white', link: '1_merch.html' }
-        ];
-        const randomAd = ads[Math.floor(Math.random() * ads.length)];
-        document.getElementById('random-advert').href = randomAd.link;
-        document.getElementById('advert-img').src = randomAd.src;
-        const textDiv = document.getElementById('advert-text');
-        textDiv.textContent = randomAd.text;
-        textDiv.style.color = randomAd.color;
-    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
