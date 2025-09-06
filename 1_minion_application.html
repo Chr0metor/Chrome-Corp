@@ -177,9 +177,6 @@
         <label>Email to receive minion-only newsletter:</label>
         <input type="email" name="email" required>
 
-        <label>X Handle:</label>
-        <input type="text" name="x_handle">
-
         <label>Most Useful Skill:</label>
         <input type="text" name="useful_skill">
 
@@ -199,6 +196,9 @@
         <input type="text" name="preferred_reward">
 
         <input type="hidden" name="_subject" value="New Chrome Corp Minion Application!">
+
+        <!-- Honeypot for spam protection -->
+        <input type="text" name="_gotcha" style="display:none;">
 
         <button type="submit">Apply Now!</button>
     </form>
